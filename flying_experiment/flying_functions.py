@@ -41,7 +41,7 @@ def single_experiment(train_x_task, test_x_task, train_y_task, test_y_task, ntre
         network.add(layers.BatchNormalization())
         network.add(layers.Dense(2000, activation='relu'))
         network.add(layers.BatchNormalization())
-        network.add(layers.Dense(units=10, activation='softmax'))
+        network.add(layers.Dense(units=20, activation='softmax')) # units=10
 
         default_transformer_kwargs = {
             "network": network,
@@ -98,6 +98,7 @@ def single_experiment(train_x_task, test_x_task, train_y_task, test_y_task, ntre
                 odif_predictions = progressive_learner.predict(test_x_task[j], task_id=j)
 
             accuracies[10 + j + (i * (i + 1)) // 2] = np.mean(odif_predictions == test_y_task[j])
+    print('single experiment done!')
 
     return accuracies
 
