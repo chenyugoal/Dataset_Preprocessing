@@ -1,2 +1,3 @@
 
-*.npy
+data/sun397_x_all.npy
+data/sun397_y_all.npy
